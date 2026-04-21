@@ -1,0 +1,6 @@
+@MovieReservationSystem.WebAPI_HostAddress = http://localhost:5029
+
+GET {{MovieReservationSystem.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
