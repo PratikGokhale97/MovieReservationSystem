@@ -20,7 +20,9 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public string PosterUrl {  get; set; } = string.Empty;
 
-		public ICollection<Genre> Genres { get; set; } = null!;
+		public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
+
+		public ICollection<ShowTime> ShowTimes { get; set; } = new List<ShowTime>();
 
 	}
 }

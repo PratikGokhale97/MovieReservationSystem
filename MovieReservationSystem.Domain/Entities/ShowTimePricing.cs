@@ -9,10 +9,14 @@ namespace MovieReservationSystem.Domain.Entities
 {
 	public class ShowTimePricing
 	{
-		public ShowTime Id { get; set; } 
+		public int ShowTimePricingId { get; set; } 
 
 		public SeatType SeatType { get; set; }
 
+		public ShowTime ShowTime { get; set; } = null!;
+
 		public decimal Price { get; set; }
+
+		public int ShowTimeId {  get; set; }
 	}
 }

@@ -12,5 +12,13 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public int TheatreId { get; set; }
 
+		public string ScreenName { get; set; } = null!;
+
+		public Theatre Theatre { get; set; } = null!;
+
+		public ICollection<Seat> Seats { get; set; } = new List<Seat>();
+
+		public ICollection<ShowTime> ShowTimes { get; set; } = new List<ShowTime>();
+
 	}
 }

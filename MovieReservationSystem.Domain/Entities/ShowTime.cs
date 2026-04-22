@@ -16,5 +16,11 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public DateTime StartTime { get; set; } 
 
+		public Movie Movie { get; set; } = null!;
+
+		public Screen Screen { get; set; } = null!;
+
+		public ICollection<ShowTimePricing> ShowTimePricing { get; set; } = new List<ShowTimePricing>(); //one showtime has 3 pricing rows (Normal, VIP, Executive):
+
 	}
 }

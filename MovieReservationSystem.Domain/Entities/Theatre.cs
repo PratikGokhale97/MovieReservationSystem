@@ -12,6 +12,10 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public string TheatreName { get; set; } = null!;
 
-		public Address Address { get; set; }
+		public Address Address { get; set; } = null!;
+
+		public int AddressId { get; set; }
+
+		public ICollection<Screen> Screens { get; set; } = new List<Screen>();
 	}
 }

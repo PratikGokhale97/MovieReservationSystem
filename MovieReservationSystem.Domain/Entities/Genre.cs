@@ -12,7 +12,7 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public string GenreName { get; set; } = string.Empty;
 
-		public ICollection<Movie> Movies { get; set; } = null!;
+		public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
 
 	}
 }

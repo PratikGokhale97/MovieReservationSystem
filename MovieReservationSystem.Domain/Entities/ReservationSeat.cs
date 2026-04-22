@@ -13,11 +13,20 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public SeatType SeatType { get; set; }
 
-		public int Reservationid { get; set; }
+		public int ReservationId { get; set; }
+
+		public int ShowTimeId {  get; set; }
 
 		public int SeatId { get; set; }
 
 		public decimal Price { get; set; }
+
+		public Seat Seat { get; set; } = null!;
+
+		public ShowTime ShowTime { get; set; } = null!;
+
+		public Reservation Reservation { get; set; } = null!;
+
 
 	}
 }

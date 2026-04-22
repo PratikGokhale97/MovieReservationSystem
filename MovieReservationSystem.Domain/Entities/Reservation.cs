@@ -18,5 +18,10 @@ namespace MovieReservationSystem.Domain.Entities
 		public BookingStatus BookingStatus { get; set; }
 
 		public DateTime BookedAt { get; set; }
+
+		//Navigation property
+		public User User { get; set; } = null!;
+		public ShowTime ShowTime { get; set; } = null!;
+		public ICollection<ReservationSeat> ReservationSeats { get; set; } = new List<ReservationSeat>();
 	}
 }

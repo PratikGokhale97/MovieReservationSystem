@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using MovieReservationSystem.Domain.Enums;
@@ -19,5 +18,9 @@ namespace MovieReservationSystem.Domain.Entities
 		public string Passwordhash { get; set; } = null!;
 
 		public Role Role { get; set; }
+
+		//Navigation property
+		public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();  //Intialiase to avoid null reference issue
+
 	}
 }

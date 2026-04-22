@@ -17,5 +17,7 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public Screen Screen { get; set; } = null!;
 
+		public int ScreenId { get; set; }
+
 	}
 }
