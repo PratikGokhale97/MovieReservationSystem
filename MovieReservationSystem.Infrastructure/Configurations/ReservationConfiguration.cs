@@ -27,7 +27,10 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 				
 			builder.HasMany(r => r.ReservationSeats)
 				.WithOne(rs => rs.Reservation)
-				.HasForeignKey(rs => rs.ReservationId);	
+				.HasForeignKey(rs => rs.ReservationId);
+
+			builder.Property(r => r.BookedAt)
+				.HasDefaultValueSql("GETUTCDATE()");
 		}
 	}
 }

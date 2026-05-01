@@ -17,7 +17,17 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 
 			builder.HasMany(u => u.Reservations)
 				.WithOne(r => r.User)
-				.HasForeignKey(r => r.UserId);	
+				.HasForeignKey(r => r.UserId);
+
+
+			builder.Property(u => u.UserName)
+				.IsRequired();
+
+			builder.Property(u => u.Email)
+				.IsRequired();
+
+			builder.Property(u => u.Passwordhash)
+				.IsRequired();
 		}
 	}
 }

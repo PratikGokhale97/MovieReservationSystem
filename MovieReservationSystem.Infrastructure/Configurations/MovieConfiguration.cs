@@ -23,6 +23,14 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 			builder.HasMany(m => m.ShowTimes)
 				.WithOne(s => s.Movie)
 				.HasForeignKey(s => s.MovieId);
+
+			builder.Property(m => m.MovieName)
+				.IsRequired()
+				.HasMaxLength(255)
+				.IsUnicode(true);
+
+			builder.Property(m => m.PosterUrl)
+				.HasMaxLength(250);
 		}
 	}
 }

@@ -14,6 +14,17 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 		public void Configure(EntityTypeBuilder<Address> builder)
 		{
 			builder.HasKey(a => a.AddressId);
+
+			builder.Property(a => a.Pincode)
+				.IsRequired();
+
+			builder.Property(a => a.City)
+				.IsRequired();
+
+			builder.Property(a => a.State)
+				.IsRequired();
+
 		} 
+
 	}
 }

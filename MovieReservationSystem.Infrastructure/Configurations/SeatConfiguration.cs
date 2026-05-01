@@ -18,6 +18,9 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 			builder.HasOne(s => s.Screen)
 				.WithMany(sc => sc.Seats)
 				.HasForeignKey(s => s.ScreenId);
+
+			builder.Property(s => s.SeatNumber)
+				.IsRequired();
 		}
 	}
 }

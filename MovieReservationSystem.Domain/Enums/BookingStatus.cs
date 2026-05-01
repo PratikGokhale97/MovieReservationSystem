@@ -10,6 +10,8 @@ namespace MovieReservationSystem.Domain.Enums
 	{
 		Pending = 0,
 		Booked = 1,
-		Failed= 2
+		Failed= 2,
+		Cancelled = 3,
+		NotActive = 4
 	}
 }

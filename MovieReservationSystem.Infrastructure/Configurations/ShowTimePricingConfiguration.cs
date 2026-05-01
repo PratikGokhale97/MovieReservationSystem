@@ -23,6 +23,9 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 			// Prevent duplicate SeatType pricing for same showtime:
 			builder.HasIndex(sp => new { sp.SeatType, sp.ShowTimeId })
 				.IsUnique();
+
+			builder.Property(stp => stp.Price)
+				.HasColumnType("decimal(18,2)");
 		}
 	}
 }

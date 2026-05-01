@@ -13,29 +13,22 @@ namespace MovieReservationSystem.Infrastructure.Data
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 		public DbSet<Address> Address {  get; set; }
-		public DbSet<Genre> Genre { get; set; }
-		public DbSet<Movie> Movie { get; set; }
-		public DbSet<MovieGenre> MovieGenre { get; set; }
-		public DbSet<Reservation> Reservation { get; set; }
-		public DbSet<Screen> Screen { get; set; }
-		public DbSet<Seat> Seat { get; set; }
-		public DbSet<ShowTime> ShowTime { get; set; }
-		public DbSet<ShowTimePricing> ShowTimePricing { get; set; }
-		public DbSet<Theatre> Theatre { get; set; }
-		public DbSet<User> User { get; set; }
-
+		public DbSet<Genre> Genres { get; set; }
+		public DbSet<Movie> Movies { get; set; }
+		public DbSet<MovieGenre> MovieGenres { get; set; }
+		public DbSet<Reservation> Reservations { get; set; }
+		public DbSet<Screen> Screens { get; set; }
+		public DbSet<Seat> Seats { get; set; }
+		public DbSet<ShowTime> ShowTimes { get; set; }
+		public DbSet<ShowTimePricing> ShowTimePricings { get; set; }
+		public DbSet<Theatre> Theatres { get; set; }
+		public DbSet<User> Users { get; set; }
+		public DbSet<ReservationSeat> ReservationSeats { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
 		}
-
-
-
-
-
-
-
 
 	}
 }

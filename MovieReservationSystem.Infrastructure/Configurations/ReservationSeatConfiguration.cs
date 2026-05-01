@@ -17,18 +17,25 @@ namespace MovieReservationSystem.Infrastructure.Configurations
 
 			builder.HasOne(rs => rs.Seat)
 				.WithMany()
-				.HasForeignKey(rs => rs.SeatId);
+				.HasForeignKey(rs => rs.SeatId)
+				.OnDelete(DeleteBehavior.Restrict);  //cannot delete seat if reservationseat exists
 
 			builder.HasOne(rs => rs.ShowTime)
 				.WithMany()
-				.HasForeignKey(rs => rs.ShowTimeId);
+				.HasForeignKey(rs => rs.ShowTimeId)
+				.OnDelete(DeleteBehavior.Restrict);  //cannot delete showtime seat if reservationseat exists
 
 			builder.HasOne(rs => rs.Reservation)
 				.WithMany(r => r.ReservationSeats)
-				.HasForeignKey(rs => rs.ReservationId);
+				.HasForeignKey(rs => rs.ReservationId)
+				.OnDelete(DeleteBehavior.Cascade);   //can delete reservation even if reservationseat exists
 
 			builder.HasIndex(rs => new { rs.SeatId, rs.ShowTimeId })
 				.IsUnique();
+
+			builder.Property(rs => rs.Price)
+				.HasColumnType("decimal(18,2)");
+			
 		}
 	}
 }
