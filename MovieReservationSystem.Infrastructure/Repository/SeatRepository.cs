@@ -20,9 +20,11 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		{
 			var reservedseatsIds = await _context.ReservationSeats.Where(rs => rs.ShowTimeId == showTimeId).Select(rs => rs.SeatId).ToListAsync();
 
-			var showtimes = await _context.ShowTimes.FindAsync(showTimeId);
+			var showtimes = await _context.ShowTimes.FindAsync(showTimeId) ??
+				throw new KeyNotFoundException($"ShowTimeId : {showTimeId} not found");
 
 			return await _dbSet.Where(s => s.ScreenId == showtimes.ScreenId && !reservedseatsIds.Contains(s.SeatId)).ToListAsync();
+				
 		}
 
 		public async Task<IEnumerable<Seat>> GetSeatsByScreenIdAsync(int screenId)

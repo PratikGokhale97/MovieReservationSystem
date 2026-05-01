@@ -24,6 +24,6 @@ namespace MovieReservationSystem.Domain.Interfaces
 		//Get reservation by movie id
 		Task<IEnumerable<Reservation>> GetReservationsByMovieIdAsync(int movieId);
 
-
+		Task<Reservation?> GetReservationWithDetailsAsync(int reservationId);
 	}
 }

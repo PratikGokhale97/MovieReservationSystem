@@ -16,7 +16,7 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		public ShowTimeRepository(AppDbContext context) : base(context) { }
 		public async Task<IEnumerable<ShowTime>> GetShowTimesByDateAsync(DateTime date)
 		{
-			return await _dbSet.Where(st => st.StartTime == date).ToListAsync();
+			return await _dbSet.Where(st => st.StartTime.Date == date.Date).ToListAsync();
 		}
 		public async Task<IEnumerable<ShowTime>> GetShowTimesByMovieIdAsync(int movieId)
 		{
@@ -30,6 +30,11 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		{ 
 			return await _context.ShowTimePricings.Where(st => st.ShowTimeId == showTimeId).ToListAsync();
 		}
-		
+
+		public async Task<ShowTime?> GetShowTimeWithPricingAsync(int showTimeId)
+		{
+			return await _dbSet.Include(s => s.ShowTimePricing)
+				.FirstOrDefaultAsync(s => s.ShowTimeId == showTimeId);
+		}
 	}
 }

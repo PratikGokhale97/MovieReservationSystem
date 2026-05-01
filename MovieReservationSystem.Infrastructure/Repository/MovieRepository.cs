@@ -26,7 +26,7 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		public async Task<IEnumerable<Movie>> GetMoviesByDatesAsync(DateTime date)
 		{
 			return await _dbSet.Include(m => m.ShowTimes)
-				.Where(m => m.ShowTimes.Any(st => st.StartTime == date)).ToListAsync();
+				.Where(m => m.ShowTimes.Any(st => st.StartTime.Date == date.Date)).ToListAsync();
 		}
 
 		public async Task<IEnumerable<Movie>> GetMoviesByGenresAsync(int genreId)
@@ -34,9 +34,18 @@ namespace MovieReservationSystem.Infrastructure.Repository
 			return await _dbSet.Where(m => m.MovieGenres.Any(mg => mg.GenreId == genreId)).ToListAsync();			
 		}
 
-		public async Task<IEnumerable<Movie>> GetMoviesByShowtimeAsync(int showtimeId)
+		public async Task<Movie?> GetMovieWithDetailsAsync(int movieId)
 		{
-			return await _dbSet.Where(m => m.ShowTimes.Any(st => st.ShowTimeId == showtimeId)).ToListAsync();
+			return await _dbSet.Include(m => m.MovieGenres)
+						.ThenInclude(mg => mg.Genre)
+						.Include(m => m.ShowTimes)
+						.FirstOrDefaultAsync(m => m.MovieId == movieId);
+		}   
+
+
+		public async Task<decimal> GetTotalRevenueByMoviesByIdAsync(int movieId)
+		{
+			return await _context.ReservationSeats.Where(rs => rs.ShowTime.MovieId == movieId).SumAsync(rs => rs.Price);
 		}
 	}
 }

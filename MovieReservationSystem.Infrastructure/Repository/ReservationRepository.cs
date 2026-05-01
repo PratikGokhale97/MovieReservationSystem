@@ -38,5 +38,18 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		{
 			return await _dbSet.Where(r => r.ShowTime.ScreenId == screenId).ToListAsync();
 		}
+
+		public async Task<Reservation?> GetReservationWithDetailsAsync(int reservationId)
+		{
+			return await _dbSet.Include(r => r.ReservationSeats)
+						.Include(r => r.ShowTime)
+						.ThenInclude(s => s.Movie)
+						.FirstOrDefaultAsync(r => r.ReservationId == reservationId);
+		}
+
+		public async Task<decimal> GetTotalRevenueByMovieIdAsync(int movieId)
+		{
+			return await _context.ReservationSeats.Where(r => r.ShowTime.MovieId == movieId).SumAsync(rs => rs.Price);
+		}
 	}
 }
