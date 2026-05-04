@@ -26,10 +26,13 @@ namespace MovieReservationSystem.Infrastructure.Repository
 		{
 			return await _dbSet.Where(st => st.ScreenId == screenId).ToListAsync();
 		}
-		public async Task<IEnumerable<ShowTimePricing>> GetShowTimePricingByShowTimeIdAsync(int showTimeId) 
-		{ 
-			return await _context.ShowTimePricings.Where(st => st.ShowTimeId == showTimeId).ToListAsync();
-		}
+
+		//Below method is not needed as we can get the pricing details with showtime details in one query using
+		//include method in ef core, so we can remove this method and use the below method to get showtime with pricing details in one query.
+		//public async Task<IEnumerable<ShowTimePricing>> GetShowTimePricingByShowTimeIdAsync(int showTimeId) 
+		//{ 
+		//	return await _context.ShowTimePricings.Where(st => st.ShowTimeId == showTimeId).ToListAsync();
+		//}
 
 		public async Task<ShowTime?> GetShowTimeWithPricingAsync(int showTimeId)
 		{

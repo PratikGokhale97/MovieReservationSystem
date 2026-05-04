@@ -22,6 +22,6 @@ namespace MovieReservationSystem.Domain.Entities
 		//Navigation property
 		public User User { get; set; } = null!;
 		public ShowTime ShowTime { get; set; } = null!;
-		public ICollection<ReservationSeat> ReservationSeats { get; set; } = new List<ReservationSeat>();
+		public List<ReservationSeat> ReservationSeats { get; set; } = new List<ReservationSeat>();
 	}
 }

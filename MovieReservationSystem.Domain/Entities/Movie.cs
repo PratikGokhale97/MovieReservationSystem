@@ -14,9 +14,9 @@ namespace MovieReservationSystem.Domain.Entities
 
 		public string MovieDescription { get; set; } = string.Empty;  //empty string is passed even if value is not given from external source it can be empty but not null
 
-		public int Rating { get; set; }
+		public decimal Rating { get; set; }
 
-		public string MovieReviews { get; set; } = string.Empty;
+		//public string MovieReviews { get; set; } = string.Empty;
 
 		public string PosterUrl {  get; set; } = string.Empty;
 

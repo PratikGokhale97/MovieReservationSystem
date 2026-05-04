@@ -17,7 +17,7 @@ namespace MovieReservationSystem.Domain.Interfaces
 		Task<IEnumerable<ShowTime>> GetShowTimesByDateAsync(DateTime date);
 
 		//Get showtimepricing for a showtime
-		Task<IEnumerable<ShowTimePricing>> GetShowTimePricingByShowTimeIdAsync(int showTimeId);
+		//Task<IEnumerable<ShowTimePricing>> GetShowTimePricingByShowTimeIdAsync(int showTimeId);
 
 		Task<ShowTime?> GetShowTimeWithPricingAsync(int showTimeId);
 
